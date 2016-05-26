@@ -19,7 +19,6 @@ may have unpredictable results.
 
 require 'forecast_io'
 require 'selenium-webdriver'
-require 'whenever'
 
 #Returns an emoji for a given weather condition
 def emojiTranslator(weather_icon)
@@ -51,7 +50,7 @@ def weatherPostGenerator
 	  configuration.api_key = '16e00305725189eb6eff8d1c87cbc886'
 	end
 
-	forecast = ForecastIO.forecast(40.0506, -77.5203)
+	forecast = ForecastIO.forecast(40.0506, -77.5203) #CHANGE THESE COORDINATES FOR YOUR LOCATION
 
 	post = "Currently: " + 
 			emojiTranslator(forecast.currently.icon) + " " +
@@ -67,14 +66,24 @@ def weatherPostGenerator
 	return post
 end
 
-def run
-	default_profile = Selenium::WebDriver::Firefox::Profile.from_name "default"
-	default_profile.native_events = true
+default_profile = Selenium::WebDriver::Firefox::Profile.from_name "default"
+default_profile.native_events = true
 
-	driver = Selenium::WebDriver.for(:firefox, :profile => default_profile)
-	driver.manage.timeouts.implicit_wait = 10
-	driver.navigate.to "https://www.yikyak.com/nearby/new"
-	textElement = driver.find_element(:class, "form-control")
-	textElement.send_keys weatherPostGenerator
-	driver.find_element(:class, "send").click
-end
+driver = Selenium::WebDriver.for(:firefox, :profile => default_profile)
+driver.manage.timeouts.implicit_wait = 10
+driver.navigate.to "https://www.yikyak.com/nearby/new"
+textElement = driver.find_element(:class, "form-control")
+textElement.send_keys weatherPostGenerator
+driver.find_element(:class, "send").click
+
+# def run
+# 	default_profile = Selenium::WebDriver::Firefox::Profile.from_name "default"
+# 	default_profile.native_events = true
+
+# 	driver = Selenium::WebDriver.for(:firefox, :profile => default_profile)
+# 	driver.manage.timeouts.implicit_wait = 10
+# 	driver.navigate.to "https://www.yikyak.com/nearby/new"
+# 	textElement = driver.find_element(:class, "form-control")
+# 	textElement.send_keys weatherPostGenerator
+# 	driver.find_element(:class, "send").click
+# end
