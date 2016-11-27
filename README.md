@@ -1,3 +1,5 @@
+<i>This script may be out of date due to changes with the Yik Yak web UI. It has not been tested since June 2016</i>
+
 # Yik Yak Weather
 
 A Ruby script using Selenium and (eventually) Forecast.io to post the weather daily on my local YikYak board. The post in the end will contain various emjois like :sunny: for sunny or :umbrella: for raining. 
