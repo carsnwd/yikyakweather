@@ -1,3 +1,5 @@
+DEPRECATED: Yik Yak is dead, and so is this little script I wrote years ago.
+
 <i>This script may be out of date due to changes with the Yik Yak web UI. It has not been tested since June 2016</i>
 
 # Yik Yak Weather
